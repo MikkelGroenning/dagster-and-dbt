@@ -1,0 +1,50 @@
+
+[tool.poetry]
+name = "dagster-university"
+version = "0.1.0"
+description = ""
+authors = ["Mikkel Grønning <mikkel@groenning.net>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+dagster = "^1.8.6"
+dagit = "^1.8.6"
+requests = "^2.32.3"
+pandas = "^2.2.2"
+matplotlib = "^3.9.2"
+dagster-duckdb = "^0.24.6"
+dagster-duckdb-pandas = "^0.24.6"
+faker = "^28.4.1"
+geopandas = "^1.0.1"
+plotly = "^5.24.1"
+shapely = "^2.0.6"
+kaleido = "0.2.1"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.dagster]
+module_name = "dagster_university"
+
+[tool.ruff]
+extend = "../../pyproject.toml"
+
+[tool.ruff.lint]
+extend-ignore = [
+
+  # (Unused import): We stub some files with just imports to help people get started
+  "F401",    
+  # (Import block is un-sorted or un-formatted): It's more important that we introduce the imports in the order they're used rather than alphabetically.
+  "I001",
+
+  # (relative imports): relative imports are acceptable in examples & docs
+  "TID252"
+
+]
